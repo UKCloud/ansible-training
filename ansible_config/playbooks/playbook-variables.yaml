@@ -1,0 +1,9 @@
+---
+# Example ansible variables output
+
+- hosts: all
+  vars:
+    my_var: neat-heh
+  tasks:
+  - name: Display user variables
+    debug: msg={{ my_var }}

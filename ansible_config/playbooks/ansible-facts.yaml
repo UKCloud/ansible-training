@@ -1,0 +1,7 @@
+---
+# Example ansible facts output
+
+- hosts: all
+  tasks:
+  - name: Display all variables/facts known for a host
+    debug: msg={{ ansible_mounts }}
