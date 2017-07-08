@@ -1,0 +1,8 @@
+---
+# Setup message of the day on Linux
+
+- hosts: all
+  tasks:
+  - copy:
+      src: ../templates/motd
+      dest: /etc/motd

@@ -1,0 +1,6 @@
+---
+# Example debug output
+
+- hosts: all
+  tasks:
+  - command: echo we echoing some shizzle

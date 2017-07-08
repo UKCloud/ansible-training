@@ -55,4 +55,103 @@ Or run the same command against just the webservers
 ansible -i /root/ansible_config/ansible_hosts web_servers -a "/bin/echo hello"
 ```
 
-## Writing code to action commands
+## Writing code to action commands (playbooks)
+
+Start by SSHing to one of the nodes:
+
+```
+ssh ansibletraining_backend2_1
+```
+
+Notice how no message of the day is set
+
+Now execute the message of the day playbook by running:
+
+```
+ansible-playbook playbooks/motd.yaml -i ansible_hosts
+```
+
+You'll see the playbook is very basic. It is using the copy module and specifies a motd we created under templates. 
+It takes this template and copies it up to each server.
+
+Ansible shows us the file is changed. If we re-ran the command nothing would change.
+
+### Persistency
+
+Now change the file on one of the servers by running:
+
+```
+ssh ansibletraining_backend2_1 "echo Naughty, we changed the message of the day > /etc/motd"
+```
+
+ssh back into the server and we'll see our new banner.
+
+If you re-run the platybook you'll that only that node is arked as being changed.
+SSHing back in after running the playbook will show our configuration is back in place.
+
+# Troubleshooting
+
+## dry-run
+
+Taking the example above if we again change the message of the day on a single container:
+
+```
+ssh ansibletraining_backend2_1 "echo Naughty, we changed the message of the day > /etc/motd"
+```
+
+Then SSH to the server confirm the change. If we now run the playbook in a dry run with:
+
+```
+ansible-playbook playbooks/motd.yaml -i ansible_hosts --check
+```
+
+You can see in the output it tells us what the proposed changes are. If we SSH back to the server we see it hasn't actually made any changes.
+
+## Versbose
+
+If you get errors running playbooks it can be very useful to run ansible with verbose log output:
+
+```
+ansible-playbook playbooks/motd.yaml -i ansible_hosts --check -v
+```
+
+Will give us more detail about the proposed changes
+
+you can increase verbosity by adding 'v's:
+
+```
+ansible-playbook playbooks/motd.yaml -i ansible_hosts --check -vvv
+```
+
+## Debug
+
+It can also be useful to be able to print values from your playbokk itself. Especially as you start doing more advanced scripting using jinja templating.
+
+In the first example we are going to use the command module to simply run an echo on each server:
+
+```
+ansible-playbook playbooks/without-debug.yaml -i ansible_hosts
+```
+
+This gives us limited information about the status of the command. By adding in a register option to the command and then printing the output with debug we can get far more information:
+
+```
+ansible-playbook playbooks/with-debug.yaml -i ansible_hosts
+```
+
+To see the difference between the two playbooks run:
+
+```
+diff playbooks/with-debug.yaml playbooks/without-debug.yaml
+```
+
+# Resources
+
+There are many resources available for ansible. To find modules to interact with systems checkout:
+
+http://docs.ansible.com/ansible/modules_by_category.html
+
+For more details and advanced docs and tutorials checkout:
+
+http://docs.ansible.com/ansible/intro.html
+

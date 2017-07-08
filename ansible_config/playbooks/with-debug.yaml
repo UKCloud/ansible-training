@@ -1,0 +1,9 @@
+---
+# Example debug output
+
+- hosts: all
+  tasks:
+  - command: echo we echoing some shizzle
+    register: command_output
+  - debug: msg="{{ command_output.stdout }}"
+  - debug: msg="{{ command_output.rc }}"
