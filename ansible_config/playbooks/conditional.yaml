@@ -1,0 +1,7 @@
+---
+# Echo different statements based on the server name
+
+- hosts: web_servers
+  tasks:
+  - command: echo PRIMARY
+    when: ansible_hostname == "web1"

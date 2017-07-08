@@ -145,6 +145,27 @@ To see the difference between the two playbooks run:
 diff playbooks/with-debug.yaml playbooks/without-debug.yaml
 ```
 
+# More advanced scripting
+
+## Variables
+
+TODO
+
+## Conditionals
+
+As you're playbooks become more complicated it can be useful to start to run conditional statements against variables. For example say one of our web servers is primary and the other secondary
+and we want different things done on each.
+
+```
+ansible-playbook playbooks/conditional.yaml -i ansible_hosts
+```
+
+In this example we are checking the hostname of the server we are running on and only running if we match a specific value.
+
+## Templating
+
+TODO
+
 # Resources
 
 There are many resources available for ansible. To find modules to interact with systems checkout:
