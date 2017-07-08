@@ -1,0 +1,29 @@
+version: '3'
+services:
+  ansible:
+    build: https://raw.githubusercontent.com/ansible/ansible-docker-base/master/stable-centos7/Dockerfile
+    working_dir: /root/ansible_config
+    depends_on:
+    - web1
+    entrypoint: tail -f /dev/null
+    volumes:
+    - ./.ssh/:/root/.ssh/
+    - ./ansible_config/:/root/ansible_config
+    environment:
+        ANSIBLE_HOST_KEY_CHECKING: 'False'
+  web1:
+    build: https://github.com/CentOS/CentOS-Dockerfiles.git#master:ssh/centos7
+    volumes:
+    - ./.ssh/:/root/.ssh/
+  web2:
+    build: https://github.com/CentOS/CentOS-Dockerfiles.git#master:ssh/centos7
+    volumes:
+    - ./.ssh/:/root/.ssh/
+  backend1:
+    build: https://github.com/CentOS/CentOS-Dockerfiles.git#master:ssh/centos7
+    volumes:
+    - ./.ssh/:/root/.ssh/
+  backend2:
+    build: https://github.com/CentOS/CentOS-Dockerfiles.git#master:ssh/centos7
+    volumes:
+    - ./.ssh/:/root/.ssh/

@@ -1,0 +1,7 @@
+[web_servers]
+ansibletraining_web1_1
+ansibletraining_web2_1
+
+[backend_servers]
+ansibletraining_backend1_1
+ansibletraining_backend2_1
