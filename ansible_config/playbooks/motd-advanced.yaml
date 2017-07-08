@@ -1,0 +1,8 @@
+---
+# Setup message of the day on Linux based on server type
+
+- hosts: web_servers
+  tasks:
+  - template:
+      src: ../templates/advanced-motd
+      dest: /etc/motd

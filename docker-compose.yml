@@ -12,10 +12,12 @@ services:
     environment:
         ANSIBLE_HOST_KEY_CHECKING: 'False'
   web1:
+    hostname: web1
     build: https://github.com/CentOS/CentOS-Dockerfiles.git#master:ssh/centos7
     volumes:
     - ./.ssh/:/root/.ssh/
   web2:
+    hostname: web2
     build: https://github.com/CentOS/CentOS-Dockerfiles.git#master:ssh/centos7
     volumes:
     - ./.ssh/:/root/.ssh/

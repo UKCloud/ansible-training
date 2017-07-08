@@ -164,7 +164,22 @@ In this example we are checking the hostname of the server we are running on and
 
 ## Templating
 
-TODO
+Templating is a realy powerful way to allow you to build up more complex logic in your ansible configuration.
+
+Building on the example above if we wanted to have different configuration on two servers based on their hostnames we can create a jinja template and place conditional statements to place different configuration values.
+
+If we run the following the message of the day will be set differently on web2 vs web2.
+
+```
+ansible-playbook playbooks/motd-advanced.yaml -i ansible_hosts
+```
+
+We can validate this by SSHing to each container:
+
+```
+ssh ansibletraining_web1_1
+ssh ansibletraining_web2_1
+```
 
 # Resources
 
