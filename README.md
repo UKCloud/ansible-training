@@ -1,12 +1,14 @@
 # Overview
 
-This repo contains resources to help others understand Ansible
+This repo contains resources to help others understand Ansible. There examples explaining the basic the concepts of Ansible to get users a good grounding to configuration manage servers with Ansible.
 
 # Setup
 
 These tutorials can be run anywhere that Ansible is installed.
 
-To help my life easier there is a docker compose file that pulls in 5 containers to build a lab
+To help make life easier there is a docker compose file that pulls in 5 containers to build a lab so users can unserstand how to manage groups of servers.
+
+To setup the lab run:
 
 ```
 ./setup-docker-lab.sh
@@ -15,12 +17,12 @@ To help my life easier there is a docker compose file that pulls in 5 containers
 To make the training a little more relastic the lab contains:
 
 - ansible conatiner
-- web1 conatiner
-- web2 conatiner
-- backend1 conatiner
-- backend2 conatiner
+- web1 conatiner (web1)
+- web2 conatiner (web2)
+- backend1 conatiner (backend1)
+- backend2 conatiner (backend2)
 
-You can then access the docker container running ansible with:
+Once you have setup the lab you can then access the docker container running ansible with:
 
 ```
 docker exec -i -t ansibletraining_ansible_1 /bin/bash
@@ -35,7 +37,7 @@ In the lab we have prepared this in advance but for users not using docker you'l
 
 # Test the installation
 
-Test the install by running an ansible ping to all the nodes:
+Test the installation by running an ansible ping to all the nodes:
 
 ```
 ansible -i /root/ansible_config/ansible_hosts all -m ping
@@ -74,7 +76,7 @@ ansible-playbook playbooks/motd.yaml -i ansible_hosts
 You'll see the playbook is very basic. It is using the copy module and specifies a motd we created under templates. 
 It takes this template and copies it up to each server.
 
-Ansible shows us the file is changed. If we re-ran the command nothing would change.
+Ansible shows us if the file is changed. If we re-ran the command nothing would change.
 
 ### Persistency
 
@@ -107,7 +109,7 @@ ansible-playbook playbooks/motd.yaml -i ansible_hosts --check
 
 You can see in the output it tells us what the proposed changes are. If we SSH back to the server we see it hasn't actually made any changes.
 
-## Versbose
+## Versbosity
 
 If you get errors running playbooks it can be very useful to run ansible with verbose log output:
 
@@ -115,7 +117,7 @@ If you get errors running playbooks it can be very useful to run ansible with ve
 ansible-playbook playbooks/motd.yaml -i ansible_hosts --check -v
 ```
 
-Will give us more detail about the proposed changes
+This give us more detail about the proposed changes
 
 you can increase verbosity by adding 'v's:
 
@@ -125,7 +127,7 @@ ansible-playbook playbooks/motd.yaml -i ansible_hosts --check -vvv
 
 ## Debug
 
-It can also be useful to be able to print values from your playbokk itself. Especially as you start doing more advanced scripting using jinja templating.
+It can also be useful to be able to print values from your playbook itself. Especially as you start doing more advanced scripting using jinja templating.
 
 In the first example we are going to use the command module to simply run an echo on each server:
 
@@ -209,7 +211,7 @@ Templating is a realy powerful way to allow you to build up more complex logic i
 
 Building on the example above if we wanted to have different configuration on two servers based on their hostnames we can create a jinja template and place conditional statements to place different configuration values.
 
-If we run the following the message of the day will be set differently on web2 vs web2.
+If we run the following the message of the day will be set differently on web1 vs web2.
 
 ```
 ansible-playbook playbooks/motd-advanced.yaml -i ansible_hosts
