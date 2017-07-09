@@ -1,0 +1,12 @@
+---
+# Example ansible variables output
+
+- hosts: all
+  vars:
+    my_var_1:  "{{ MY_CLI_VAR_1 }}"
+    my_var_2:  "{{ MY_CLI_VAR_2 }}"
+  tasks:
+  - name: Display user variables
+    debug: msg={{ my_var_1 }}
+  - name: Display user variables
+    debug: msg={{ my_var_2 }}

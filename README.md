@@ -180,7 +180,17 @@ ansible-playbook playbooks/playbook-variables.yaml -i ansible_hosts
 
 ### Command line vairables
 
-TODO
+Variables can be set when running the playbook like so:
+
+```
+ansible-playbook --extra-vars '{"MY_CLI_VAR_1":"shizzle","MY_CLI_VAR_2":"nizzle"}' playbooks/cli-variables.yaml -i ansible_hosts
+```
+
+or
+
+```
+ansible-playbook -e MY_CLI_VAR_1=shizzle -e MY_CLI_VAR_2=nizzle playbooks/cli-variables.yaml -i ansible_hosts
+```
 
 ## Conditionals
 
