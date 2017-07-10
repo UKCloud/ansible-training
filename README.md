@@ -16,11 +16,11 @@ To setup the lab run:
 
 To make the training a little more relastic the lab contains:
 
-- ansible conatiner
-- web1 conatiner (web1)
-- web2 conatiner (web2)
-- backend1 conatiner (backend1)
-- backend2 conatiner (backend2)
+- ansible container
+- web1 container (web1)
+- web2 container (web2)
+- backend1 container (backend1)
+- backend2 container (backend2)
 
 Once you have setup the lab you can then access the docker container running ansible with:
 
