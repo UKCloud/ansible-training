@@ -8,7 +8,7 @@ These tutorials can be run anywhere that Ansible is installed.
 
 To help make life easier there is a docker compose file that pulls in 5 containers to build a lab so users can understand how to manage groups of servers.
 
-To setup the lab run:
+To set up the lab run:
 
 ```
 ./setup-docker-lab.sh
@@ -22,7 +22,7 @@ To make the training a little more realistic the lab contains:
 - backend1 container (backend1)
 - backend2 container (backend2)
 
-Once you have setup the lab you can then access the docker container running ansible with:
+Once you have set up the lab you can then access the docker container running ansible with:
 
 ```
 docker exec -i -t ansibletraining_ansible_1 /bin/bash
@@ -32,8 +32,8 @@ docker exec -i -t ansibletraining_ansible_1 /bin/bash
 
 In the lab we have prepared this in advance but for users not using docker you'll need to:
 
-- Setup SSH keys to access the nodes you want to manage (you can use passwords but this is sloppy)
-- Setup an ansible hosts file like the one in ansible_config/ansible_hosts
+- Set up SSH keys to access the nodes you want to manage (you can use passwords but this is sloppy)
+- Set up an ansible hosts file like the one in ansible_config/ansible_hosts
 
 # Test the installation
 
